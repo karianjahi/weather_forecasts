@@ -54,17 +54,4 @@ class CurrentTemperature:
                 geocodes[place] = utils.get_coordinates(api_response)
         print(geocodes)
         return geocodes
-
-if __name__ == '__main__':
-    OBJ = CurrentTemperature("Berlin", "Stuttgart", "Dresden", "Karlsruhe", "Freiburg")
-    #print(OBJ)
-    GEOCODE_DICT = OBJ.get_geo_codes()
-    PLACES = ["Berlin", "Stuttgart", "Dresden", "Karlsruhe", "Freiburg"]
-    LATS = []
-    LONS = []
-    for aplace in PLACES:
-        LATS.append(round(GEOCODE_DICT[aplace]["lat"], 1))
-        LONS.append(round(GEOCODE_DICT[aplace]["lng"], 1))
-    print({"LATS": LATS})
-    print({"LONS": LONS})
-    print(GEOCODE_DICT["Berlin"])
+    

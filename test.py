@@ -42,33 +42,20 @@ class TestMain(unittest.TestCase):
         """
         Test geocode extraction from API
         """
-        obj_with_args = CurrentTemperature("Berlin", "Stuttgart", "Dresden", "Karlsruhe", "Freiburg")
+        obj_with_args = CurrentTemperature("Berlin",
+                                           "Stuttgart",
+                                           "Dresden",
+                                           "Karlsruhe",
+                                           "Freiburg")
         places = ["Berlin", "Stuttgart", "Dresden", "Karlsruhe", "Freiburg"]
         lats = [52.5, 48.8, 51.1, 49.0, 48.0]
         lons = [13.4, 9.2, 13.7, 8.4, 7.8]
-        geocode_dict=obj_with_args.get_geo_codes()
+        geocode_dict = obj_with_args.get_geo_codes()
         for place, lon, lat in zip(places, lons, lats):
             self.assertEqual(round(geocode_dict[place]["lng"], 1), lon)
             self.assertEqual(round(geocode_dict[place]["lat"], 1), lat)
-
-            
-        
-        
- 
-                             
-            
-            
-        
-        
         obj_without_args = CurrentTemperature()
         with self.assertRaises(Exception) as context:
             obj_without_args.get_geo_codes()
-            self.assertTrue("At least one location should be provided at __init__" in context.exception)
-        
-        
-        
-        
-    
-
-        
-        
+            self.assertTrue("No argument(s)" in context.exception)
+            
